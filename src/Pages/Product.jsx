@@ -91,10 +91,10 @@ function Product() {
         Authorization: `Bearer ${token}`
       }
     }).then(res => {
-      console.log("✅ Mahsulot o‘chirildi:", res.data);
+      console.log( res.data);
       getProducts(); 
     }).catch(err => {
-      console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+      console.error( err.response?.data || err.message);
     });
   };
 

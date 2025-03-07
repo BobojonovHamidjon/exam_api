@@ -4,9 +4,11 @@ import React, { useEffect, useState } from 'react';
 function Banner() {
   const [banners, setBanners] = useState([]);
   const [newBanner, setNewBanner] = useState({ title: '', image: '' });
-  const token = localStorage.getItem('accessToken'); 
+  const token = localStorage.getItem('accessToken');
+    const imageUrl = "https://api.fruteacorp.uz/images";
+ 
 
-  // Bannerlarni olish
+ 
   const getBanners = () => {
     axios({
       url: 'https://api.fruteacorp.uz/banner',
@@ -21,7 +23,7 @@ function Banner() {
     });
   };
 
-  // Banner qo‘shish
+
   const addBanner = () => {
     if (!newBanner.title.trim() || !newBanner.image.trim()) {
       alert("Barcha maydonlarni to‘ldiring!");
@@ -37,15 +39,15 @@ function Banner() {
       },
       data: newBanner
     }).then(res => {
-      console.log("✅ Banner qo‘shildi:", res.data);
-      setNewBanner({ title: '', image: '' });
-      setBanners(prev => [...prev, res.data.data]); // UI ni yangilash
+      console.log( res.data);
+      setNewBanner({ title: '',  imageUrl : '' });
+      setBanners(prev => [...prev, res.data.data]); 
     }).catch(err => {
-      console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+      console.error( err.response?.data || err.message);
     });
   };
 
-  // Bannerni o‘chirish
+
   const deleteBanner = (id) => {
     if (!window.confirm("Haqiqatan ham ushbu bannerni o‘chirmoqchimisiz?")) {
       return;
@@ -58,10 +60,10 @@ function Banner() {
         Authorization: `Bearer ${token}`
       }
     }).then(() => {
-      console.log(`✅ Banner o‘chirildi: ${id}`);
+      console.log(` ${id}`);
       setBanners(prevBanners => prevBanners.filter(banner => banner.id !== id));
     }).catch(err => {
-      console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+      console.error(err.response?.data || err.message);
     });
   };
 
@@ -84,8 +86,8 @@ function Banner() {
         <input 
           type="text" 
           placeholder="Banner rasm URL" 
-          value={newBanner.image}
-          onChange={(e) => setNewBanner({ ...newBanner, image: e.target.value })}
+          value={newBanner.imageUrl}
+          onChange={(e) => setNewBanner({ ...newBanner,  imageUrl : e.target.value })}
           className="border px-3 py-2 rounded-lg w-full"
         />
         <button 

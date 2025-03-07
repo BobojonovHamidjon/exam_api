@@ -23,14 +23,13 @@ function Default() {
       },
       data: { info: paymeData }
     }).then(res => {
-      console.log("✅ Payme yuborildi:", res.data);
+      console.log( res.data);
       setPaymeData('');
     }).catch(err => {
-      console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+      console.error( err.response?.data || err.message);
     });
   };
 
-  // Click ma'lumot yuborish
   const sendClick = () => {
     if (!clickData.trim()) {
       alert("Click ma'lumotlarini kiriting!");
@@ -46,10 +45,10 @@ function Default() {
       },
       data: { info: clickData }
     }).then(res => {
-      console.log("✅ Click yuborildi:", res.data);
+      console.log( res.data);
       setClickData('');
     }).catch(err => {
-      console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+      console.error( err.response?.data || err.message);
     });
   };
 
@@ -57,7 +56,7 @@ function Default() {
     <div className='p-5'>
       <h1 className='text-xl font-bold'>Default Bo‘lim</h1>
 
-      {/* Payme */}
+    
       <div className="mb-5">
         <h2 className='text-lg font-bold'>Payme ma'lumot yuborish</h2>
         <input 
@@ -75,7 +74,7 @@ function Default() {
         </button>
       </div>
 
-      {/* Click */}
+     
       <div className="mb-5">
         <h2 className='text-lg font-bold'>Click ma'lumot yuborish</h2>
         <input 
@@ -87,7 +86,7 @@ function Default() {
         />
         <button 
           onClick={sendClick}
-          className="bg-green-500 text-white px-4 py-2 rounded-lg mt-2"
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2"
         >
           Yuborish
         </button>

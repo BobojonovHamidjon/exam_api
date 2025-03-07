@@ -7,7 +7,6 @@ function Wishlist() {
 
   const token = localStorage.getItem('accessToken');
 
-  // Wishlistni olish funksiyasi
   const getWishlist = () => {
     axios({
       url: 'https://api.fruteacorp.uz/wishlist',
@@ -20,11 +19,10 @@ function Wishlist() {
         setWishlist(res.data.data);
       })
       .catch(err => {
-        console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+        console.error("", err.response?.data || err.message);
       });
   };
 
-  // Wishlistga mahsulot qo‘shish yoki olib tashlash
   const toggleWishlist = () => {
     if (!productId.trim()) {
       alert("Mahsulot ID kiriting!");
@@ -41,13 +39,13 @@ function Wishlist() {
       data: { productId }
     })
       .then(res => {
-        console.log("✅ Wishlist yangilandi:", res.data);
-        alert("✅ Wishlist yangilandi!");
+        
+        alert("");
         setProductId('');
         getWishlist();
       })
       .catch(err => {
-        console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+        console.error( err.response?.data || err.message);
       });
   };
 

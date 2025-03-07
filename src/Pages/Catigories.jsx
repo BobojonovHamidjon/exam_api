@@ -41,11 +41,11 @@ function Catigories() {
         parentId: null 
       }
     }).then(res => {
-      console.log("✅ Kategoriya qo‘shildi:", res.data);
+      console.log( res.data);
       setNewCategory('');
-      setCategory(prev => [...prev, res.data.data]); // UI ni yangilash
+      setCategory(prev => [...prev, res.data.data]); 
     }).catch(err => {
-      console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+      console.error( err.response?.data || err.message);
     });
   };
 
@@ -61,12 +61,11 @@ function Catigories() {
         Authorization: `Bearer ${token}`
       }
     }).then(() => {
-      console.log(`✅ Kategoriya o‘chirildi: ${id}`);
-      
-      // UI dan kategoriya o‘chirish
+      console.log(` ${id}`);
+    
       setCategory(prevCategories => prevCategories.filter(cat => cat.id !== id));
     }).catch(err => {
-      console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+      console.error( err.response?.data || err.message);
     });
   };
 

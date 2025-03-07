@@ -7,7 +7,7 @@ function Cart() {
 
   const token = localStorage.getItem('accessToken');
 
-  // Savatni olish funksiyasi
+
   const getCart = () => {
     axios({
       url: 'https://api.fruteacorp.uz/cart',
@@ -20,11 +20,11 @@ function Cart() {
         setCartItems(res.data.data);
       })
       .catch(err => {
-        console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+        console.error(err.response?.data || err.message);
       });
   };
 
-  // Savatga mahsulot qo‘shish
+ 
   const addToCart = () => {
     if (!productId.trim()) {
       alert("Mahsulot ID kiriting!");
@@ -41,17 +41,17 @@ function Cart() {
       data: { productId }
     })
       .then(res => {
-        console.log("✅ Mahsulot savatga qo‘shildi:", res.data);
-        alert("✅ Mahsulot qo‘shildi!");
+ 
+        alert();
         setProductId('');
         getCart();
       })
       .catch(err => {
-        console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+        console.error( err.response?.data || err.message);
       });
   };
 
-  // Savatdan mahsulot olib tashlash
+
   const removeFromCart = (id) => {
     axios({
       url: 'https://api.fruteacorp.uz/cart/remove',
@@ -63,12 +63,12 @@ function Cart() {
       data: { productId: id }
     })
       .then(res => {
-        console.log("✅ Mahsulot o‘chirildi:", res.data);
-        alert("✅ Mahsulot olib tashlandi!");
+      
+        alert();
         getCart();
       })
       .catch(err => {
-        console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
+        console.error( err.response?.data || err.message);
       });
   };
 

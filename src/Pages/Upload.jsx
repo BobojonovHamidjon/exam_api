@@ -8,7 +8,7 @@ function Upload() {
 
   const token = localStorage.getItem('accessToken');
 
-  // Fayl tanlanganda preview qilish
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -17,7 +17,7 @@ function Upload() {
     }
   };
 
-  // Rasmlarni yuklash funksiyasi
+
   const uploadImage = () => {
     if (!image) {
       alert("Iltimos, rasm tanlang!");
@@ -30,20 +30,20 @@ function Upload() {
     setLoading(true);
     
     axios({
-      url: 'https://api.fruteacorp.uz/upload/image',
+      url: 'https://api.fruteacorp.uz/upload/images',
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`
       },
       data: formData
     }).then(res => {
-      console.log("✅ Rasm muvaffaqiyatli yuklandi:", res.data);
-      alert("✅ Rasm yuklandi!");
+      console.log( res.data);
+      alert();
       setImage(null);
       setPreview('');
     }).catch(err => {
-      console.error("❌ Xatolik yuz berdi:", err.response?.data || err.message);
-      alert("❌ Rasm yuklashda xatolik!");
+      console.error( err.response?.data || err.message);
+      alert();
     }).finally(() => {
       setLoading(false);
     });
