@@ -74,7 +74,7 @@ function Wishlist() {
       </div>
 
       <div className='grid grid-cols-1 gap-5'>
-        {wishlist.length > 0 ? wishlist.map(item => (
+        {wishlist.key > 0 ? wishlist.map(item => (
           <div key={item.id} className='flex justify-between items-center p-3 bg-gray-200 rounded-lg'>
             <p className='text-lg'>{item.productName}</p>
           </div>
